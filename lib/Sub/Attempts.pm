@@ -4,7 +4,7 @@ use strict;
 #use warnings;
 use vars qw($VERSION @EXPORT);
 
-$VERSION = "1.00";
+$VERSION = "1.01";
 
 use Exporter;
 use base qw(Exporter);
@@ -107,11 +107,18 @@ sub attempts
   {
     if ($args{method})
     {
-      $old_sub = sub {
-	my $this = shift;
-        my $parent_method = "SUPER::$subname";
-        $this->$parent_method(@_);
+      # this eval is here as we need to switch packages to declare a
+      # subroutine so SUPER works and with the current limitations of
+      # perl, there's no way to do that by mucking about with
+      # typeglobs.
+      eval qq{package $package;
+              sub $subname
+              {
+                 my \$this = shift;
+                 \$this->SUPER::$subname(\@_)
+              }
       };
+      $old_sub = *{ $glob }{CODE};
     }
     else
     {

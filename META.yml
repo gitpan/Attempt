@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name: Attempt
-version: 1.00
+version: 1.01
 license: perl
 distribution_type: module
 requires:
@@ -14,11 +14,11 @@ conflicts: {}
 provides:
   Attempt:
     file: lib/Attempt.pm
-    version: 1.00
+    version: 1.01
   Attribute::Attempts:
     file: lib/Attribute/Attempts.pm
     version: 1.00
   Sub::Attempts:
     file: lib/Sub/Attempts.pm
-    version: 1.00
-generated_by: Module::Build version 0.20
+    version: 1.01
+generated_by: Module::Build version 0.19

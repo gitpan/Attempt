@@ -1,24 +1,13 @@
 #!/usr/bin/perl
 
-package My::Package;
-use Test::More tests => 3;
+use FindBin;
+use File::Spec::Functions;
+use lib (catdir($FindBin::Bin,"mylib"));
 
-sub foo { "bar" }
+use Test::More tests => 1;
 
-##########################################################
-
-package My::Subclass;
-use base qw(My::Package);
-use Test::Exception;
-use Sub::Attempts;
-
-dies_ok  { attempts("foo"); };
-lives_ok { attempts("foo", method => 1) };
-
-##########################################################
-
-package main;
-use Test::More;
+use My::Package;
+use My::Subclass;
 
 is(My::Subclass->foo,"bar","and it's full of stars");
 

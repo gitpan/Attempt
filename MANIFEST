@@ -1,7 +1,10 @@
 Build.PL
+CHANGES
 MANIFEST			This list of files
 MANIFEST.SKIP
 META.yml
+Makefile.PL
+TODO
 lib/Attempt.pm
 lib/Attribute/Attempts.pm
 lib/Sub/Attempts.pm
@@ -15,4 +18,5 @@ t/07param.t
 t/08sleep.t
 t/09method.t
 t/10handlers.t
-Makefile.PL
+t/mylib/My/Package.pm
+t/mylib/My/Subclass.pm
